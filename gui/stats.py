@@ -6,7 +6,7 @@ class Stats:
     def __init__(self, gui):
         self.gui = gui
 
-        self.bars, self.labels = [0] * 10, [0] * 10
+        self.bars, self.labels = [None] * 10, [None] * 10
 
     def init(self):
         for i in range(10):
