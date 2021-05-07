@@ -1,7 +1,6 @@
-import os
 from tkinter import *
 
-import cv2
+import numpy as np
 from PIL import ImageGrab, ImageOps
 
 from .stats import Stats
@@ -27,8 +26,6 @@ class App(Tk):
         self.canvas = Canvas(self, height=size, width=size, bg="white")
         self.canvas.place(x=10, y=10)
 
-        self.image = Canvas(self, height=30, width=30, bg="white")
-
         # Configure buttons
         self.clear_btn = Button(self, text="Clear", height=2, width=15, command=self.clear)
         self.clear_btn.place(x=215, y=15)
@@ -48,7 +45,7 @@ class App(Tk):
         self.y = event.y
 
     def draw(self, event):
-        self.canvas.create_rectangle((self.x, self.y, event.x, event.y), fill="black", width=10)
+        self.canvas.create_rectangle((self.x, self.y, event.x, event.y), fill="black", width=12)
         self.x = event.x
         self.y = event.y
 
@@ -58,8 +55,6 @@ class App(Tk):
         self.bars.clear()
 
     def predict(self):
-        filename = "digit.png"
-
         x = self.winfo_rootx() + self.canvas.winfo_x()
         y = self.winfo_rooty() + self.canvas.winfo_y()
 
@@ -68,27 +63,14 @@ class App(Tk):
 
         # Grab the image, and save it.
         image = ImageGrab.grab().crop((x, y, x1, y1))
-        image = ImageOps.invert(image.resize((28, 28)))
-        image.save(filename)
-
-        # Read and process the image.
-        image = cv2.imread(filename, cv2.IMREAD_COLOR)
-        gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+        image = ImageOps.invert(image)
+        image = np.array(image.resize((28, 28)).convert("L"))
 
         # Predict and get scores
-        prediction, pred_array = predict(gray)
-
-        # Display the image
-        digit = PhotoImage(file=filename)
-        self.image.create_image(220, 220, image=digit, anchor=NW)
+        prediction, pred_array = predict(image)
 
         self.prediction.configure(text=f"Prediction : {prediction}")
         self.bars.show(pred_array)
-
-        try:
-            os.remove(filename)
-        except Exception:
-            pass
 
     def start(self):
         self.canvas.bind("<Button-1>", self.click)
