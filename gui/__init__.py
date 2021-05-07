@@ -55,6 +55,8 @@ class App(Tk):
         self.bars.clear()
 
     def predict(self):
+        self.canvas.update()
+
         x = self.winfo_rootx() + self.canvas.winfo_x()
         y = self.winfo_rooty() + self.canvas.winfo_y()
 
