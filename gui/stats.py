@@ -15,11 +15,11 @@ class Stats:
                 self.labels[i], orient=HORIZONTAL, length=100, mode='determinate', value=1, maximum=100
             )
 
-        self.labels[0].place(x=400, y=0, height=30, width=130)
+        self.labels[0].place(x=500, y=0, height=30, width=130)
         self.bars[0].place(x=7, y=-2)
 
         for i in range(1, 10):
-            self.labels[i].place(x=400, y=30*i, height=30, width=130)
+            self.labels[i].place(x=500, y=30*i, height=30, width=130)
             self.bars[i].place(x=7, y=-2)
 
     def clear(self):

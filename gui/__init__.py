@@ -21,21 +21,21 @@ class App(Tk):
         self.columnconfigure(0, weight=1)
 
         # Configure canvas
-        size = 200
+        size = 250
 
         self.canvas = Canvas(self, height=size, width=size, bg="white")
         self.canvas.place(x=10, y=10)
 
         # Configure buttons
         self.clear_btn = Button(self, text="Clear", height=2, width=15, command=self.clear)
-        self.clear_btn.place(x=215, y=15)
+        self.clear_btn.place(x=265, y=75)
 
         self.predict_btn = Button(self, text="Predict", height=2, width=15, command=self.predict)
-        self.predict_btn.place(x=215, y=75)
+        self.predict_btn.place(x=265, y=135)
 
         # Prediction
-        self.prediction = Label(self, width=20, height=2, text="Predict to get result.")
-        self.prediction.place(x=100, y=250)
+        self.prediction = Label(self, width=20, height=2, text="Predict to get result.", font='Helvetica 14 bold')
+        self.prediction.place(x=10, y=280)
 
         self.bars = Stats(self)
         self.bars.init()
