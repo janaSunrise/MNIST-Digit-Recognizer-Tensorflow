@@ -2,6 +2,12 @@
 
 > A Handwritten digit recognizer ML project in Tensorflow and Python.
 
+## Running Demo
+
+Here's a Demo on how it works
+
+![alt text](https://github.com/janaSunrise/MNIST-Digit-Recognizer-Tensorflow/blob/main/assets/mnist_digit_prediction.gif)
+
 ## Installation and usage.
 
 This project uses `pipenv` for dependency management. You need to ensure that you have `pipenv`
