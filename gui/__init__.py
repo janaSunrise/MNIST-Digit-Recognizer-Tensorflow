@@ -15,7 +15,7 @@ class App(Tk):
 
         # Initialize the GUI with title, and the sizing
         self.title("MNIST Digit Recognizer")
-        self.geometry("700x600")
+        self.geometry("650x500")
 
         # Configure column and rows
         self.rowconfigure(0, weight=1)
@@ -28,15 +28,15 @@ class App(Tk):
         self.canvas.place(x=10, y=10)
 
         # Configure buttons
-        self.clear_btn = Button(self, text="Clear", height=2, width=15, command=self.clear)
-        self.clear_btn.place(x=265, y=75)
+        self.clear_btn = Button(self, text="Clear", height=2, width=10, command=self.clear)
+        self.clear_btn.place(x=20, y=265)
 
-        self.predict_btn = Button(self, text="Predict", height=2, width=15, command=self.predict)
-        self.predict_btn.place(x=265, y=135)
+        self.predict_btn = Button(self, text="Predict", height=2, width=10, command=self.predict)
+        self.predict_btn.place(x=130, y=265)
 
         # Prediction label and bars representation
         self.prediction = Label(self, width=20, height=2, text="Predict to get result.", font='Helvetica 14 bold')
-        self.prediction.place(x=10, y=280)
+        self.prediction.place(x=280, y=100)
 
         self.bars = Stats(self)
         self.bars.init()
@@ -48,7 +48,7 @@ class App(Tk):
 
     def draw(self, event) -> None:
         """Event to handle the drawing of Digit."""
-        self.canvas.create_rectangle((self.x, self.y, event.x, event.y), fill="black", width=12)
+        self.canvas.create_rectangle((self.x, self.y, event.x, event.y), fill="black", width=11)
         self.x = event.x
         self.y = event.y
 

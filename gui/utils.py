@@ -12,6 +12,6 @@ def predict(grid: np.ndarray) -> tuple:
     normalized_digit = normalized_digit.astype('float32') / 255.0
 
     # Get predictions
-    prediction_array = model.predict([normalized_digit])
+    prediction_array = model.predict(normalized_digit)
 
     return prediction_array.argmax(), prediction_array
