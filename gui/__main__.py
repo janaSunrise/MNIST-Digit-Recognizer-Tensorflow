@@ -1,5 +1,5 @@
 from . import App
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app = App()
     app.start()

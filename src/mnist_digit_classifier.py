@@ -36,8 +36,8 @@ test_images = test_images.reshape(test_images.shape[0], 28, 28, 1)
 input_shape = (28, 28, 1)
 
 # Convert into float for Keras API
-train_images = train_images.astype('float32')
-test_images = test_images.astype('float32')
+train_images = train_images.astype("float32")
+test_images = test_images.astype("float32")
 
 # Normalize the data
 train_images, test_images = train_images / 255.0, test_images / 255.0
@@ -51,29 +51,39 @@ train_images = train_images[:-validation_samples]
 train_labels = train_labels[:-validation_samples]
 
 # Create the model!
-model = keras.models.Sequential([
-    keras.layers.Conv2D(32, kernel_size=(3, 3), input_shape=input_shape, activation="relu"),
-    keras.layers.MaxPooling2D(pool_size=(2, 2)),
-    keras.layers.Dropout(0.2),
-
-    keras.layers.Conv2D(64, (3, 3), activation="relu"),
-    keras.layers.MaxPooling2D(pool_size=(2, 2)),
-    keras.layers.Dropout(0.2),
-
-    keras.layers.Flatten(),
-    keras.layers.Dense(128, activation="relu"),
-    keras.layers.Dropout(0.5),
-    keras.layers.Dense(10, activation="softmax")
-])
+model = keras.models.Sequential(
+    [
+        keras.layers.Conv2D(
+            32, kernel_size=(3, 3), input_shape=input_shape, activation="relu"
+        ),
+        keras.layers.MaxPooling2D(pool_size=(2, 2)),
+        keras.layers.Dropout(0.2),
+        keras.layers.Conv2D(64, (3, 3), activation="relu"),
+        keras.layers.MaxPooling2D(pool_size=(2, 2)),
+        keras.layers.Dropout(0.2),
+        keras.layers.Flatten(),
+        keras.layers.Dense(128, activation="relu"),
+        keras.layers.Dropout(0.5),
+        keras.layers.Dense(10, activation="softmax"),
+    ]
+)
 
 # Compile the model
-model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+model.compile(
+    optimizer="adam", loss="sparse_categorical_crossentropy", metrics=["accuracy"]
+)
 
 # Initializing a callback, So the model doesn't train further, If there is no proper improvement in it. Within 4 epochs.
-callback = keras.callbacks.EarlyStopping(monitor='loss', patience=3)
+callback = keras.callbacks.EarlyStopping(monitor="loss", patience=3)
 
 # We'll start the training process now, with 20 epochs.
-model.fit(train_images, train_labels, epochs=20, callbacks=[callback], validation_data=(x_val, y_val))
+model.fit(
+    train_images,
+    train_labels,
+    epochs=20,
+    callbacks=[callback],
+    validation_data=(x_val, y_val),
+)
 
 # Time to evaluate the model's predictions.
 model.evaluate(test_images, test_labels)

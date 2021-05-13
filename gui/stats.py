@@ -12,7 +12,12 @@ class Stats:
         for i in range(10):
             self.labels[i] = LabelFrame(self.gui, text=str(i))
             self.bars[i] = Progressbar(
-                self.labels[i], orient=HORIZONTAL, length=100, mode='determinate', value=1, maximum=100
+                self.labels[i],
+                orient=HORIZONTAL,
+                length=100,
+                mode="determinate",
+                value=1,
+                maximum=100,
             )
 
         self.labels[0].place(x=500, y=0, height=30, width=130)
@@ -24,12 +29,12 @@ class Stats:
 
     def clear(self) -> None:
         for i in range(10):
-            self.bars[i]['value'] = 1
+            self.bars[i]["value"] = 1
         self.gui.update()
 
     def show(self, stats) -> None:
         for i in range(10):
             amount = stats[0][i]
-            self.bars[i]['value'] = amount * 1000
+            self.bars[i]["value"] = amount * 1000
 
         self.gui.update()

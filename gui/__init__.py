@@ -28,14 +28,24 @@ class App(Tk):
         self.canvas.place(x=10, y=10)
 
         # Configure buttons
-        self.clear_btn = Button(self, text="Clear", height=2, width=10, command=self.clear)
+        self.clear_btn = Button(
+            self, text="Clear", height=2, width=10, command=self.clear
+        )
         self.clear_btn.place(x=20, y=265)
 
-        self.predict_btn = Button(self, text="Predict", height=2, width=10, command=self.predict)
+        self.predict_btn = Button(
+            self, text="Predict", height=2, width=10, command=self.predict
+        )
         self.predict_btn.place(x=130, y=265)
 
         # Prediction label and bars representation
-        self.prediction = Label(self, width=20, height=2, text="Predict to get result.", font='Helvetica 14 bold')
+        self.prediction = Label(
+            self,
+            width=20,
+            height=2,
+            text="Predict to get result.",
+            font="Helvetica 14 bold",
+        )
         self.prediction.place(x=280, y=100)
 
         self.bars = Stats(self)
@@ -48,7 +58,9 @@ class App(Tk):
 
     def draw(self, event) -> None:
         """Event to handle the drawing of Digit."""
-        self.canvas.create_rectangle((self.x, self.y, event.x, event.y), fill="black", width=11)
+        self.canvas.create_rectangle(
+            (self.x, self.y, event.x, event.y), fill="black", width=11
+        )
         self.x = event.x
         self.y = event.y
 
