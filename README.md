@@ -20,16 +20,13 @@ Here's how to install the dependencies, and get started.
 
 And you're done, and you can run any of the files, and test them.
 
-**Note**: There is a GUI Application built for testing too. You can run it by using `pipenv run start`.
-The model might not be really good, But it performed decently on test set.
-
 ### Debugging
 
 If you ever get a `ModuleNotFoundError`, Saying `tkinter` library is not found, No worries. Here are some tips to fix it:
 
-- **Linux** | Execute this command to fix it: `sudo apt install python3-tk`
-- **MacOS** | Execute this command to fix: `brew install python-tk`
-- **Windows** | You need to reinstall python, And select the option to install tkinter and all other libraries when you install again.
+- **Linux**: Execute this command to fix it: `sudo apt install python3-tk`
+- **MacOS**: Execute this command to fix: `brew install python-tk`
+- **Windows**: You need to reinstall python, And select the option to install tkinter and all other libraries when you install again.
 
 ### Project structure
 
